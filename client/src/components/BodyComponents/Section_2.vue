@@ -34,6 +34,14 @@
                 <div v-for="item in items">
                     {{ item }}
                 </div>
+                <div 
+                    :style="{
+                        backgroundColor: '#808080',
+                        height: '35px',
+                        width: '25px'
+                    }">
+                    <Icon icon-name="Check" icon-clr="white"/>
+                </div>
             </div>
         </div>
     </div>
@@ -71,7 +79,7 @@
         align-items: center;
         /* justify-content: center; */
         justify-items: center;
-        margin-top: 12px;
+        margin-top: 15px;
     }
 
     .calc_buttons > div {
@@ -80,13 +88,15 @@
         height: 100%;
         width: 100%;
         max-width: 64px;
+        min-width: 58px;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        border: 1px solid #858585;
+        border: 1px solid #bbbbbbaf;
         border-radius: 10px;
         font-size: 28px;
         font-weight: 500;
+        background-color: #fff;
     }
 
 </style>

@@ -2,7 +2,7 @@
     import { PropType } from 'vue';
 
     type Color = 'black' | 'white'
-    type IconName = 'ArrowBack' | 'Wallet' |'Money' | 'Edit' | 'Check' | 'Backspace' | 'Creditcard'
+    type IconName = 'ArrowBack' | 'Wallet' |'Money' | 'Edit' | 'Check' | 'Backspace' | 'Creditcard' | 'Close'
     let Icon: Record<IconName, string> = {
         'ArrowBack' : 'arrow_back_ios',
         'Wallet' : 'account_balance_wallet',
@@ -10,7 +10,8 @@
         'Edit' : 'edit',
         'Check' : 'check_circle',
         'Backspace' : 'backspace',
-        'Creditcard' : 'credit_card'
+        'Creditcard' : 'credit_card',
+        'Close' : 'close'
     }
     // type IconName = `${Icon.}`
     defineProps({
