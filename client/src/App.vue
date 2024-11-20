@@ -1,21 +1,17 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 import HeaderBar from './components/HeaderBar.vue'
 import Sidebar from './components/Sidebar.vue'
 import MainBody from './components/MainBody.vue'
-import FooterBody from './components/BodyComponents/Footer_Body.vue'
 </script>
 
 <template>
-  <div class="layout">
     <HeaderBar />
     <Sidebar />
     <MainBody />
-  </div>
 </template>
 
-<style scoped>
-  .layout {
+<style>
+  #app {
     height: 100vh;
     display: grid;
     grid:
