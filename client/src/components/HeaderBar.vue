@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps<{ msg: string }>()
-
-const count = ref(0)
 </script>
 
 <template>
-    <!-- <div class="sidebar"> -->
+    <div class="header">
 
-    <!-- </div> -->
+    </div>
 </template>
+
+<style scoped>
+    .header { 
+        grid-area: header; 
+        background-color: yellow;
+    }
+</style>
