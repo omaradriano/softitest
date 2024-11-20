@@ -2,8 +2,19 @@
     import { PropType } from 'vue';
 
     type Color = 'black' | 'white'
+    type IconName = 'ArrowBack' | 'Wallet' |'Money' | 'Edit' | 'Check' | 'Backspace' | 'Creditcard'
+    let Icon: Record<IconName, string> = {
+        'ArrowBack' : 'arrow_back_ios',
+        'Wallet' : 'account_balance_wallet',
+        'Money' : 'payments',
+        'Edit' : 'edit',
+        'Check' : 'check_circle',
+        'Backspace' : 'backspace',
+        'Creditcard' : 'credit_card'
+    }
+    // type IconName = `${Icon.}`
     defineProps({
-        iconName: {type: String, required: true},
+        iconName: {type: String as PropType<IconName>, required: true},
         iconClass: String,
         iconFs: String,
         iconClr: {type: String as PropType<Color>},
@@ -15,7 +26,7 @@
     <span 
         :class="['material-icons', iconClass]" 
         :style="{ fontSize: iconFs, color: iconClr }">
-        {{iconName}}
+        {{Icon[iconName]}}
     </span>
 </template>
 
