@@ -8,7 +8,7 @@ import Icon from './Items/Icon.vue';
     <div class="header">
         <div :style="{display: 'flex', alignItems: 'center', gap: '25px'}">
             <div class='backOption'>
-                <Icon icon-name="arrow_back_ios" icon-class="txtSalmon"/>
+                <Icon icon-name='ArrowBack' icon-class="txtSalmon"/>
                 <p class="txtSalmon">Atras</p>
             </div>
             <h2 class="txtBold">Pago de propinas</h2>
