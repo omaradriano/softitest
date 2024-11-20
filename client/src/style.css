@@ -28,3 +28,12 @@
 
 .txtBold { font-weight: 700; }
 
+.fRow{
+  display: flex;
+  flex-direction: row;
+}
+.fColumn{
+  display: flex;
+  flex-direction: column;
+}
+
