@@ -12,7 +12,7 @@
   --color-dark: #3d3d3d;
   --color-neutralWhite: #e6e6e6;
   --color-salmonWhite: #fbdeda;
-  --color-gray: #c5c5c5;
+  /* --color-neutralWhite: #c5c5c5; */
   --color-neutral: #858585;
 }
 
@@ -24,6 +24,9 @@
 }
 .bgSalmon {
   background-color: var(--color-salmonWhite);
+}
+.bgNeutral{
+  background-color: var(--color-neutralWhite);
 }
 
 .txtBold { font-weight: 700; }
