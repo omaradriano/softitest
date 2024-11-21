@@ -37,8 +37,8 @@
                 <div 
                     :style="{
                         backgroundColor: '#808080',
-                        height: '35px',
-                        width: '25px'
+                        height: '50px',
+                        width: '50px'
                     }">
                     <Icon icon-name="Check" icon-clr="white"/>
                 </div>
@@ -66,6 +66,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-height: 450px;
     }
 
     .calc_buttons {
@@ -88,7 +89,7 @@
         height: 100%;
         width: 100%;
         max-width: 64px;
-        min-width: 58px;
+        /* min-width: 58px; */
         align-items: center;
         justify-content: center;
         cursor: pointer;

@@ -11,6 +11,6 @@
 <style scoped>
     .sidebar { 
         grid-area: sidebar;
-        background-color: orange; 
+        /* background-color: orange;  */
     }
 </style>

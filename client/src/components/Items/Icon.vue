@@ -13,7 +13,6 @@
         'Creditcard' : 'credit_card',
         'Close' : 'close'
     }
-    // type IconName = `${Icon.}`
     defineProps({
         iconName: {type: String as PropType<IconName>, required: true},
         iconClass: String,

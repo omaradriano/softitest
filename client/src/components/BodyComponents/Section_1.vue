@@ -55,6 +55,7 @@ import PayMethod from '../SectionComponents/PayMethod.vue';
             <div class="fRow"
                 :style="{
                     marginTop: '20px',
+                    marginBottom: '20px',
                     gap: '10px',
                     alignItems: 'center',
                     // justifyContent: 'center'
