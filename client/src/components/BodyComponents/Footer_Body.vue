@@ -46,6 +46,7 @@
         display: block;
         /* background-color: red; */
         padding: 15px 65px;
+        font-size: 22px;
         border-radius: 35px;
         background-color: var(--color-salmon);
         color: #fff;

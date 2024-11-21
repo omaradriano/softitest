@@ -16,7 +16,7 @@ import PayMethod from '../SectionComponents/PayMethod.vue';
             }">
             <p class="txtSalmon txtBold">Total de propinas</p>
             <div :style="{display: 'flex', alignItems:'center', gap: '10px'}">
-                <PriceSummary amount="1,828.00" bg-color="whiteSalmon" txt-color="salmon"/>
+                <PriceSummary amount="1,828.00" bg-color="whiteSalmon" txt-color="salmon" type="number" input-type="text" :is-input="true"/>
                 <Icon icon-fs="32px" icon-name="Edit"/>
             </div>
         </div>

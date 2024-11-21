@@ -22,7 +22,7 @@
         grid:
             "section_1 section_2 section_3" 1fr
             "section_1 section_2 section_3" 1fr
-            "footerBody footerBody footerBody" 150px
+            "footerBody footerBody footerBody" 120px
             / 1fr 1fr 1fr;
     }
 </style>

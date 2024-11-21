@@ -1,6 +1,9 @@
 <script setup lang="ts">
 
-    import { defineProps, PropType } from 'vue';
+    import { defineProps, inject, PropType } from 'vue';
+
+    const store: any = inject('store')
+
     defineProps({
         customClass: String,
         txtColor: {
@@ -31,7 +34,7 @@
 <template>
     <div 
         :class="['PriceSummary', customClass, colors[txtColor], bgs[bgColor]]">
-        <h1>${{ amount }}</h1>
+        <h1>${{ store.amount }}</h1>
     </div>
 </template>
 
@@ -43,5 +46,7 @@
         width: fit-content;
         padding: 7px 18px;
         border-radius: 8px;
+        max-width: 225px;
+        overflow-x: hidden;
     }
 </style>

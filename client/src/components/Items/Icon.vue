@@ -1,6 +1,7 @@
 <script setup lang="ts">
-    import { PropType } from 'vue';
+    import { inject, PropType } from 'vue';
 
+    
     type Color = 'black' | 'white'
     type IconName = 'ArrowBack' | 'Wallet' |'Money' | 'Edit' | 'Check' | 'Backspace' | 'Creditcard' | 'Close'
     let Icon: Record<IconName, string> = {
@@ -13,19 +14,39 @@
         'Creditcard' : 'credit_card',
         'Close' : 'close'
     }
+    const store: any = inject('store')
     defineProps({
-        iconName: {type: String as PropType<IconName>, required: true},
+        iconName: {
+            type: String as PropType<IconName>,
+            required: true
+        },
         iconClass: String,
         iconFs: String,
-        iconClr: {type: String as PropType<Color>},
+        iconClr: {
+            type: String as PropType<Color>
+        },
+        // caller : Function as PropType<() => void>
+        onEvent: {
+            type: Function as PropType<() => void>,
+            required: false,
+            default(){
+                console.log("Mensaje default")
+            }
+        }
     })
+
+    function test(){
+        caller()
+    }
+
 
 </script>
 
 <template>
     <span 
         :class="['material-icons', iconClass]" 
-        :style="{ fontSize: iconFs, color: iconClr }">
+        :style="{ fontSize: iconFs, color: iconClr, cursor: 'pointer' }"
+        @click="test">
         {{Icon[iconName]}}
     </span>
 </template>

@@ -1,9 +1,19 @@
 <script setup lang="ts">
     import Icon from '../Items/Icon.vue';
-    import { ref } from 'vue';
+    import { inject, ref } from 'vue';
 
     let chars = ['1','2','3','4','5','6','7','8','9','00','0']
     const items = ref([...chars])
+    const store: any = inject('store')
+
+    function sayHi(target: HTMLDivElement){
+        console.log(`Hola me llamo russsel ${target.innerText}`)
+        store.increment(target.innerText);
+    }
+
+    function testFunction(){
+        console.log("Sup")
+    }
 
 </script>
 
@@ -17,28 +27,32 @@
                     alignItems: 'center',
                 }">
                 <input type="number"
+                    class="txtSalmon"
                     :style="{
                         width: '100%',
                         height: '35px',
-                        fontSize: '18px',
+                        fontSize: '22px',
                         textAlign: 'end',
                         paddingRight: '10px',
                         border: 'none',
                         backgroundColor: 'transparent',
-                        outline: 'none'
-                    }">
-                <Icon icon-name="Backspace"/>
+                        outline: 'none',
+                        fontWeight: '700',
+                        letterSpacing: '2px',
+                    }"
+                    :value="store.amount">
+                <Icon icon-name="Backspace" :onEvent="testFunction"/>
             </div>
 
             <div class="calc_buttons">
-                <div v-for="item in items">
+                <div v-for="item in items" v-on:click="sayHi($event.target)">
                     {{ item }}
                 </div>
                 <div 
                     :style="{
                         backgroundColor: '#808080',
-                        height: '50px',
-                        width: '50px'
+                        height: '35px',
+                        width: '25px'
                     }">
                     <Icon icon-name="Check" icon-clr="white"/>
                 </div>
@@ -66,7 +80,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-height: 450px;
     }
 
     .calc_buttons {
@@ -89,7 +102,7 @@
         height: 100%;
         width: 100%;
         max-width: 64px;
-        /* min-width: 58px; */
+        min-width: 58px;
         align-items: center;
         justify-content: center;
         cursor: pointer;

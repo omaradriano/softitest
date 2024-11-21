@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, provide, reactive } from 'vue'
 import './style.css'
 import App from './App.vue'
 
@@ -11,6 +11,18 @@ import PriceSummary from './components/Items/PriceSummary.vue';
 
 const app = createApp(App);
 
+// const store = reactive({
+//     count: 0,
+//     increment() {
+//       this.count++;
+//     },
+//     decrement() {
+//       this.count--;
+//     },
+//   });
+  
+//   provide('store', store)
+
 //Component that belongs to the body grid area
 app
     .component('FooterBody', FooterBody)
@@ -19,6 +31,8 @@ app
     .component('Section_3', Section_3)
     .component('Icon', Icon)
     .component('PriceSummary', PriceSummary)
+
+// app.provide('store', store)
 
 app.mount('#app')
 

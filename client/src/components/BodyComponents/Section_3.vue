@@ -17,7 +17,7 @@ import Icon from '../Items/Icon.vue';
             </div>
             <div class="PaidLabel__right">
                 <p>$300.00</p>
-                <Icon icon-name="Close" icon-clr="salmon" icon-fs="32px"/>
+                <Icon icon-name="Close" icon-clr="white" icon-fs="32px" />
             </div>
         </div>
     </div>

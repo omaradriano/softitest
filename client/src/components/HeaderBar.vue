@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Icon from './Items/Icon.vue';
+import PriceSummary from './Items/PriceSummary.vue';
 
 
 </script>
