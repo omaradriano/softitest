@@ -2,8 +2,6 @@
 
     import { defineProps, inject, PropType } from 'vue';
 
-    const store: any = inject('store')
-
     defineProps({
         customClass: String,
         txtColor: {
@@ -34,7 +32,7 @@
 <template>
     <div 
         :class="['PriceSummary', customClass, colors[txtColor], bgs[bgColor]]">
-        <h1>${{ store.amount }}</h1>
+        <h1>${{ amount }}</h1>
     </div>
 </template>
 

@@ -1,8 +1,24 @@
 <script setup lang="ts">
 
+import { inject } from 'vue';
 import Icon from '../Items/Icon.vue';
 import PriceSummary from '../Items/PriceSummary.vue';
 import PayMethod from '../SectionComponents/PayMethod.vue';
+
+const store: any = inject('store')
+
+function ToggleTotalAmountOfTips(){
+    // console.log("Activando ingresar dineros")
+    store.disableAllActions()
+    store.actions.InsertTips.state = true 
+}
+
+function ToggleAmountOfPeople(){
+    store.disableAllActions()
+    store.actions.InsertAmountOfPeople.state = true
+}
+
+
 
 </script>
 
@@ -15,9 +31,9 @@ import PayMethod from '../SectionComponents/PayMethod.vue';
                 gap: '5px'
             }">
             <p class="txtSalmon txtBold">Total de propinas</p>
-            <div :style="{display: 'flex', alignItems:'center', gap: '10px'}">
-                <PriceSummary amount="1,828.00" bg-color="whiteSalmon" txt-color="salmon" type="number" input-type="text" :is-input="true"/>
-                <Icon icon-fs="32px" icon-name="Edit"/>
+            <div :style="{display: 'flex', alignItems:'center', gap: '10px', padding: '5px', margin: '10px 0'}" :class="{focusLabel: store.actions.InsertTips.state}">
+                <PriceSummary :amount="store.amountString" bg-color="whiteSalmon" txt-color="salmon" type="number" input-type="text" :is-input="true"/>
+                <Icon icon-fs="32px" icon-name="Edit" @launch-emit="ToggleTotalAmountOfTips"/>
             </div>
         </div>
 
@@ -32,17 +48,18 @@ import PayMethod from '../SectionComponents/PayMethod.vue';
             <h4 :style="{textAlign: 'start'}" class="txtDark">¿Entre cúantos quieres dividir las
             Propinas?</h4>
             <div class="fRow"
+                :class="{focusLabel: store.actions.InsertAmountOfPeople.state}"
                 :style="{
                     marginTop: '10px',
                     alignItems: 'center',
                     justifyContent: 'center',
                     width: '100%',
-                    padding: '0px 15px',
+                    // padding: '0px 15px',
                     gap: '25px'
                 }" >
                 <div class="InputTest fRow">
                     <p class="txtBold">#</p>
-                    <input type="text">
+                    <input readonly type="number" @focusin="ToggleAmountOfPeople">
                 </div>
                 <h4 class="txtSalmon txtBold">$0.00 x Persona</h4>
             </div>
@@ -108,6 +125,12 @@ import PayMethod from '../SectionComponents/PayMethod.vue';
         border: none;
         background-color: transparent;
         outline: none;
-        
+    }
+    .focusLabel{
+        /* background-color: red; */
+        border-radius: 10px;
+        border: 2px solid orange;
+        padding: 5px;
+        background-color: rgb(255, 218, 149)
     }
 </style>

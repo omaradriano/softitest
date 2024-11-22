@@ -26,27 +26,28 @@
             type: String as PropType<Color>
         },
         // caller : Function as PropType<() => void>
-        onEvent: {
-            type: Function as PropType<() => void>,
-            required: false,
-            default(){
-                console.log("Mensaje default")
-            }
-        }
+        // onEvent: {
+        //     type: Function as PropType<() => void>,
+        //     required: false,
+        //     default(){
+        //         console.log("Mensaje default")
+        //     }
+        // }
     })
 
-    function test(){
-        caller()
-    }
+    const customEmits = defineEmits(['launch-emit'])
 
+    function callEmit(){
+        customEmits('launch-emit')
+    }
 
 </script>
 
 <template>
     <span 
         :class="['material-icons', iconClass]" 
-        :style="{ fontSize: iconFs, color: iconClr, cursor: 'pointer' }"
-        @click="test">
+        :style="{ fontSize: iconFs, color: iconClr, cursor: 'pointer', userSelect: 'none' }"
+        @click="callEmit">
         {{Icon[iconName]}}
     </span>
 </template>

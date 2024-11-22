@@ -6,13 +6,14 @@
     const items = ref([...chars])
     const store: any = inject('store')
 
-    function sayHi(target: HTMLDivElement){
-        console.log(`Hola me llamo russsel ${target.innerText}`)
-        store.increment(target.innerText);
+    function test(trgt: Event){
+        const { target } = trgt
+        if(target instanceof HTMLDivElement)
+        store.addValue(target.innerText)
     }
 
-    function testFunction(){
-        console.log("Sup")
+    function testEmit(){
+        store.removeValue()
     }
 
 </script>
@@ -41,11 +42,11 @@
                         letterSpacing: '2px',
                     }"
                     :value="store.amount">
-                <Icon icon-name="Backspace" :onEvent="testFunction"/>
+                <Icon icon-name="Backspace" @launch-emit="testEmit"/>
             </div>
 
             <div class="calc_buttons">
-                <div v-for="item in items" v-on:click="sayHi($event.target)">
+                <div v-for="item in items" @click="test($event)">
                     {{ item }}
                 </div>
                 <div 

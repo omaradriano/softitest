@@ -1,46 +1,76 @@
 <script setup lang="ts">
 import HeaderBar from './components/HeaderBar.vue'
-import Sidebar from './components/Sidebar.vue'
+import Sidebar from './components/SideBar.vue'
 import MainBody from './components/MainBody.vue'
 
 import { provide, reactive } from 'vue';
 
 const store = reactive({
-  amount: 0, // Valor numérico puro
-  amountString: '', // Cadena acumulativa para mostrar
+  amount: 0, 
+  amountRemain: 2750,
+  amountString: '', 
   dividedBy: 0,
-  payMethod: '',
-
-  // Divide el monto
-  divide() {
-    return this.dividedBy !== 0 ? this.amount / this.dividedBy : 0;
+  payMethod: {
+    efectivo:false,
+    bbva: false,
+    santander: false
   },
-
-  // Incrementar y actualizar valores
-  increment(number: string) {
-    this.amountString += number; // Agregar el número como texto
-    this.updateAmount(); // Actualizar el valor numérico puro
-  },
-
-  // Borrar el último carácter
-  deleteLastChar() {
-    if (this.amountString.length > 0) {
-      this.amountString = this.amountString.slice(0, -1); // Elimina el último carácter
-      this.updateAmount(); // Actualizar el valor numérico puro
+  receipts: [
+    {
+      username: '',
+      tips: 0,
+      payMethod: ''
     }
+  ],
+  actions: {  
+    InsertTips: {
+      state: false,
+      checked: false
+    },
+    InsertAmountOfPeople: {
+      state: false,
+      checked: false
+    },
+    SelectPayMethod: {
+      state: false,
+      checked: false
+    },
   },
-
-  // Actualizar el número puro
-  updateAmount() {
-    this.amount = parseFloat(this.amountString) / 100 || 0; // Si queda vacío, establecer 0
+  disableAllActions(){
+    this.actions.InsertAmountOfPeople.state = false
+    this.actions.InsertTips.state = false
+    this.actions.SelectPayMethod.state = false
   },
-
-  // Formatear el número para mostrar
-  formatNumberManual() {
-    if (!this.amount) return "0.00"; // Mostrar 0.00 si el número es 0
-    const number = this.amount.toFixed(2); // Asegurar 2 decimales
-    return number.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Separar miles
+  addValue(number: String): void{
+    this.amountString += number
+    this.formatNumberToLabel(this.amountString)
+    this.formatNumberToInput(this.amountString)
+    // this.disableAllActions()
   },
+  removeValue(): void {
+    this.amountString = this.amountString.slice(0, -1);
+    if (this.amountString.endsWith('.')) {
+      this.amountString = this.amountString.slice(0, -1);
+    }
+    this.formatNumberToLabel(this.amountString)
+    this.formatNumberToInput(this.amountString)
+  },
+  formatNumberToLabel(numeroString: String): void {
+    const numeroLimpio = numeroString.replace(/\D/g, '');
+    const numeroConDecimal = numeroLimpio.slice(0, -2) + '.' + numeroLimpio.slice(-2);
+    this.amountString = numeroConDecimal.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  },
+  formatNumberToInput(numeroFormateado: String): void {
+    const numeroSinFormato = numeroFormateado.replace(/,/g, '').replace('.', '');
+    this.amount = parseFloat(numeroSinFormato) / 100;
+  },
+  // getStringValue(){
+  //   return this.amountString
+  // },
+  // getNumberValue(){
+  //   return this.amount
+  // }
+  
 });
 
 provide('store', store)
